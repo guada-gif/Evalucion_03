@@ -1,0 +1,13 @@
+ADMINISTRADORES
+
+usuario: lupe
+contraseña: lupe
+
+
+
+
+
+USUARIO NORMAL SIN PRIVILEGIOS
+
+usuario: mati123
+contraseña: MgQ26rEY57

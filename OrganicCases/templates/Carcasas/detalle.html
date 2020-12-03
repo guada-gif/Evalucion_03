@@ -1,0 +1,37 @@
+{% extends '../base.html' %} {% load static %} {% block contenido %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- ======= Detalle Section ======= -->
+<div class="container">
+    <div class="card" style="width: 50%; margin: auto">
+        <h2 class="text-center">Detalle carcasa</h2>
+
+        <img src="{{ carcasa.imagen.url }}" class="card-img-top" alt="..." />
+        <div class="card-body text-center">
+            <h5 class="card-title">{{ carcasa.nombre }}</h5>
+            <p class="card-text">{{ carcasa.descripcion }}</p>
+            <p>Por {{ carcasa.creador }} 🙂</p>
+            <p>{{ carcasa.material.nombre }}</p>
+            <p>{{ carcasa.modeloEquipo.nombre }}</p>
+            <p>$ {{ carcasa.precio }}</p>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+{% endblock contenido %}

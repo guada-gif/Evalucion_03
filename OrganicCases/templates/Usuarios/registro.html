@@ -1,0 +1,28 @@
+{% extends '../base.html' %} {% load static %} {% block contenido %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container bg-light">
+    <h1 class="text-center pt-3">Agregar USUARIO</h1>
+
+    <form method="POST" class="form py-5">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">GRABAR</button>
+    </form>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+{% endblock %}

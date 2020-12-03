@@ -1,0 +1,254 @@
+{% extends '../base.html' %} {% load static %} {% block contenido %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+        <div
+            id="heroCarousel"
+            class="carousel slide carousel-fade"
+            data-ride="carousel"
+        >
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide 1 -->
+                <div
+                    class="carousel-item active"
+                    style="background: url( {% static "./imgs/slide/sustentable.png" %})"
+                >
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">
+                                <span>Organic Cases</span> Carcasas sustentable
+                            </h2>
+                            <p class="animate__animated animate__fadeInUp">
+                                Una tienda con carcasa para celulares actuales
+                                que utilizan como materias primas materiales
+                                sustentables.
+                                ¡Tú nos das la idea, nosotros nos ocupamos del diseño!
+                                Diseña sin compromisos.
+                            </p>
+                            <div>
+                                <a
+                                    href="#menu"
+                                    class="btn-menu animate__animated animate__fadeInUp scrollto"
+                                    >Carcasas</a
+                                >
+                                <!-- Nombre boton de inicio -->
+                                <a
+                                    href="#book-a-table"
+                                    class="btn-book animate__animated animate__fadeInUp scrollto"
+                                    >¡Haz tu diseño!</a
+                                >
+                                <!-- Nombre boton de inicio -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div
+                    class="carousel-item"
+                    style="background: url( {% static "./imgs/slide/sustentable2.jpeg" %})"
+                >
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">
+                                Sustentabilidad
+                            </h2>
+                            <p class="animate__animated animate__fadeInUp">
+                                Consiste en dar respuesta a las necesidades
+                                básicas, ofrecer una mejor calidad de vida,
+                                minimizando el uso de los recursos naturales y
+                                emisiones y sin comprometer las necesidades de
+                                las generaciones futuras.
+                            </p>
+                            <div>
+                                <a
+                                    href="#menu"
+                                    class="btn-menu animate__animated animate__fadeInUp scrollto"
+                                    >Carcasas</a
+                                >
+                                <a
+                                    href="#book-a-table"
+                                    class="btn-book animate__animated animate__fadeInUp scrollto"
+                                    >¡Haz tu diseño!</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div
+                    class="carousel-item"
+                    style="background: url({% static "./imgs/slide/sustentable3.jpg" %})"
+                >
+                    <div class="carousel-background">
+                        <img src="assets/img/slide/sustentable3.jpg" alt="" />
+                    </div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">
+                                Reciclaje
+                            </h2>
+                            <p class="animate__animated animate__fadeInUp">
+                                El reciclaje es un proceso cuyo objetivo es
+                                convertir residuos en nuevos productos o en
+                                materia prima para su posterior utilización.
+                            </p>
+                            <div>
+                                <a
+                                    href="#menu"
+                                    class="btn-menu animate__animated animate__fadeInUp scrollto"
+                                    >Carcasas</a
+                                >
+                                <a
+                                    href="#book-a-table"
+                                    class="btn-book animate__animated animate__fadeInUp scrollto"
+                                    >¡Haz tu diseño!</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a
+                class="carousel-control-prev"
+                href="#heroCarousel"
+                role="button"
+                data-slide="prev"
+            >
+                <span
+                    class="carousel-control-prev-icon icofont-simple-left"
+                    aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a
+                class="carousel-control-next"
+                href="#heroCarousel"
+                role="button"
+                data-slide="next"
+            >
+                <span
+                    class="carousel-control-next-icon icofont-simple-right"
+                    aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- End Hero -->
+
+<section id="gallery" class="gallery bg-light">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h2>Galeria de <span>Carcasas</span></h2>
+            <p>
+                Todas nuestras carcasas son únicas, porque el diseño lo decides tú. Tú nos das la idea, nosotros lo hacemos realidad para ti.
+
+            </p>
+        </div>
+        <div class="row no-gutters">
+            {% for carcasa in object_list %}
+            {% if carcasa.imagen and carcasa.terminada %}
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a
+                            href="{{ carcasa.imagen.url }}"
+                            class="venobox"
+                            data-gall="gallery-item"
+                        >
+                            <img
+                                src="{{ carcasa.imagen.url }}"
+                                alt=""
+                                class="img-fluid"
+                            />
+                        </a>
+                    </div>
+                    <p class="mb-0 text-center">{{ carcasa.nombre }}</p>
+                    <p class="mb-0 text-center">$ {{ carcasa.precio }}</p>
+                    <a
+                        class="btn btn-secondary align-center mb-5"
+                        style="margin=5%; width:95%"
+                        href="{% url 'detalle_carcasa' carcasa.id %}"
+                    >
+                        Ver detalle
+                    </a>
+                </div>
+            {% endif%}
+            {% endfor %}
+
+
+
+
+
+        </div>
+    </div>
+</section>
+<!-- End Gallery Section -->
+<!-- ======= Contact Section ======= -->
+      <section id="contact"
+               class="contact bg-light">
+        <div class="container">
+
+          <div class="section-title">
+            <h2><span>Encuéntranos</span></h2>
+            <p>¡Ven a nuestro sucursal principal en Santiago Centro!</p>
+          </div>
+        </div>
+
+        <div class="map">
+          <object type="text/html"
+                  data="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13316.309424872641!2d-70.6576547!3d-33.4472911!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xcfac72a68dd4b986!2sDuoc%20UC%20-%20Sede%20Padre%20Alonso%20de%20Ovalle!5e0!3m2!1ses-419!2scl!4v1600660027083!5m2!1ses-419!2scl"
+                  width="1500"
+                  height="450"></object>
+        </div>
+
+        <div class="container mt-5">
+
+          <div class="info-wrap">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 info">
+                <i class="icofont-google-map"></i>
+                <h4>Ubicación:</h4>
+                <p> Padre Alonso de Ovalle 1586, Santiago, Región Metropolitana</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="icofont-clock-time icofont-rotate-90"></i>
+                <h4>Horarios:</h4>
+                <p>Lunes-Sábados:<br>11:00 AM - 23:00 PM</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>Organic.Case.Web@gmail.com<br>Organic.Case.Web@gmail.com</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="icofont-phone"></i>
+                <h4>Teléfono:</h4>
+                <p>+569-41852968<br>+562-22441019</p>
+              </div>
+            </div>
+          </div>
+
+        
+
+        </div>
+      </section><!-- End Contact Section -->
+
+<br />
+
+
+{% endblock contenido %}

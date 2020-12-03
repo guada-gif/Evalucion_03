@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    {% load pwa %}
+    {% progressive_web_app_meta %}
+
+
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0"
+              name="viewport" />
+
+        <title>Organic Cases</title>
+        <meta content=""
+              <meta
+              content=""
+              name="keywords" />
+
+        <!-- Favicons -->
+        <link href="{% static "./imgs/favicon.png" %}"
+              rel="icon" />
+        <link href="{% static "./imgs/apple-touch-icon.png" %}"
+              rel="apple-touch-icon" />
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i/Satisfy/Comic+Neue:300,300i,400,400i,700,700i"
+              rel="stylesheet" />
+
+        <!-- Vendor CSS Files -->
+        <link href="{% static "./styles/vendor/bootstrap/css/bootstrap.min.css" %}"
+              rel="stylesheet">
+        <link href="{% static "./styles/vendor/icofont/icofont.min.css" %}"
+              rel="stylesheet">
+        <link href="{% static "./styles/vendor/boxicons/css/boxicons.min.css" %}"
+              rel="stylesheet">
+        <link href="{% static "./styles/vendor/animate.css/animate.min.css" %}"
+              rel="stylesheet">
+        <link href="{% static "./styles/vendor/venobox/venobox.css" %}"
+              rel="stylesheet">
+        <link href="{% static "./styles/vendor/owl.carousel/assets/owl.carousel.min.css" %}"
+              rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{% static "./styles/style.css" %}"
+              rel="stylesheet">
+        {% block estilos %}{% endblock estilos %}
+    </head>
+
+    <body>
+        <!-- ======= Top Bar ======= -->
+        <section id="topbar"
+                 class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
+            <div class="container text-right">
+                <i class="icofont-phone"></i> +569-41852968
+                <!--Numero de contacto -->
+                <i class="icofont-clock-time icofont-rotate-180"></i> Lun-San:
+                11:00 AM - 23:00 PM
+                <!-- Horarios Disponibles -->
+            </div>
+        </section>
+
+        <!-- ======= Header ======= -->
+        <header id="header"
+                class="fixed-top d-flex align-items-center header-transparent">
+            <div class="container d-flex align-items-center">
+                <div class="logo mr-auto">
+                    <h1 class="text-light">
+                        <a href="/"><span>Organic Cases</span></a>
+                    </h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                </div>
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li class="active"><a href="/">Inicio</a></li>
+                        <li><a href="{% url 'buscar_carcasas' %}">Buscar</a></li>
+                        {% if not user.is_authenticated %}
+                        <li><a href="{% url 'registrar' %}">Registrarse</a></li>
+                        <li><a href="{% url 'login' %}">Entrar</a></li>
+
+                        {% else %}
+                        <li><a href="#">{{user.username}}</a></li>
+
+                        <li><a href="{% url 'logout' %}">Salir</a></li>
+                        <li class="book-a-table text-center">
+                            <a href="{% url 'crear_carcasa'%}">¡Crea tu carcasa!</a>
+                        </li>
+                        {% endif %}
+
+
+
+                    </ul>
+                </nav>
+                <!-- .nav-menu -->
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <main id="main"
+              class="bg-dark">{% block contenido %} {% endblock contenido %}</main>
+        <!-- End #main -->
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="container">
+                <h3>Organic Cases</h3>
+                <p>
+                    Para más información acerca de Organic Cases puedes
+                    seguirnos en redes sociales.
+                </p>
+                <div class="social-links">
+                    <a href="#"
+                       class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="#"
+                       class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"
+                       class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"
+                       class="google-plus"><i class="bx bxl-skype"></i></a>
+                    <a href="#"
+                       class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                </div>
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Organic Cases</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    Organic Cases by
+                    <a href="https://bootstrapmade.com/">Guadalupe, Bárbara y Matías</a>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+
+        <a href="#"
+           class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+        <!-- Vendor JS Files -->
+        <script src="{% static "./scripts/vendor/jquery/jquery.min.js" %} "></script>
+        <script src="{% static "./scripts/vendor/bootstrap/js/bootstrap.bundle.min.js" %} "></script>
+        <script src="{% static "./scripts/vendor/jquery.easing/jquery.easing.min.js" %} "></script>
+        <script src="{% static "./scripts/vendor/php-email-form/validate.js" %} "></script>
+        <script src="{% static "./scripts/vendor/jquery-sticky/jquery.sticky.js" %} "></script>
+        <script src="{% static "./scripts/vendor/isotope-layout/isotope.pkgd.min.js" %} "></script>
+        <script src="{% static "./scripts/vendor/venobox/venobox.min.js" %} "></script>
+        <script src="{% static "./scripts/vendor/owl.carousel/owl.carousel.min.js" %} "></script>
+
+        <!-- Template Main JS File -->
+        <script src="{% static "./scripts/main.js" %} "></script>
+        {% block scripts %} {% endblock scripts %}
+    </body>
+
+</html>

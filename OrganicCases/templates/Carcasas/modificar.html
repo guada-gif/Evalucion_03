@@ -1,0 +1,41 @@
+{% extends '../base.html' %} {% load static %} {% block contenido %}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container bg-light">
+    <form method="POST" enctype="multipart/form-data" class="text-center">
+        <br />
+        <br />
+        <h2>Modificar carcasa</h2>
+
+        <br />
+        <br />
+        <img
+            src="{{ object.imagen.url }}"
+            class="img-fluid"
+            style="width: 50%"
+        />
+        <br />
+        <br />
+        {{ form.as_p }} {% csrf_token %}
+        <button type="submit" value="update" class="btn btn-primary">
+            Modificar
+        </button>
+
+        <br />
+        <br />
+        <br />
+        <br />
+    </form>
+</div>
+<br />
+<br />
+<br />
+<br />
+{% endblock contenido %}

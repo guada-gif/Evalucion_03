@@ -1,0 +1,96 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block contenido %}
+<br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<div class="container bg-light py-5">
+    <h3>Listado de carcasas</h3>
+
+    <form class="form-inline mb-5"
+          method="GET">
+        <div class="form-group mx-3">
+            <label class="mr-2">Buscar material:</label>
+
+            <input type="text"
+                   class="form-control mr-2"
+                   name="nombre-material">
+
+            <button class="btn btn-secondary"
+                    type="submit"
+                    name="btn-buscarMaterial">Buscar</button>
+        </div>
+
+        <div class="form-group mx-3">
+            <label class="mr-2">Buscar modelo equipo:</label>
+            <input type="text"
+                   class="form-control mr-2"
+                   name="nombre-modelo">
+            <button class="btn btn-secondary"
+                    type="submit"
+                    name="btn-buscarModelo">Buscar</button>
+        </div>
+
+    </form>
+
+    {% if object_list %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Material</th>
+                <th>Modelo</th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for carcasa in object_list %}
+            {% if carcasa.imagen %}
+            <tr>
+                <th scope="row">{{ carcasa.nombre }} </th>
+                <td>$ {{ carcasa.precio }}</td>
+                <td>{{ carcasa.material }}</td>
+                <td>{{ carcasa.modeloEquipo }}</td>
+
+
+                <td><a class="btn btn-primary"
+                       href="{% url 'detalle_carcasa' carcasa.id %}">Ver</a></td>
+                {% if user.is_staff %}
+                <td><a class="btn btn-danger"
+                       href="{% url 'modificar_carcasa' carcasa.id %}">Modificar</a></td>
+                <td><a class="btn btn-danger"
+                       href="{% url 'eliminar_carcasa' carcasa.id %}">Eliminar</a></td>
+                {% endif %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+    <h1>No hay registros de carcasas con el filtro especificado</h1>
+    {% endif %}
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+{% endblock %}
